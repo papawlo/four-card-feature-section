@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+@import url("https://unpkg.com/tailwindcss@1.5.2/dist/base.css");
+
+/*
+ ## Colors 
+ */
+
+//  ### Primary
+$red: hsl(0, 78%, 62%);
+$cyan: hsl(180, 62%, 55%);
+$orange: hsl(34, 97%, 64%);
+$blue: hsl(212, 86%, 64%);
+
+//  ### Neutral
+$very-dark-blue: hsl(234, 12%, 34%);
+$grayish-blue: hsl(229, 6%, 66%);
+$very-light-gray: hsl(0, 0%, 98%);
+
+//  ### DEBUG
+.debug * {
+  outline: 1px solid red;
+}
+
+//  ### START
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: $grayish-blue;
+  background: $very-light-gray;
+  margin: 90px auto;
+  padding: 0 30px;
+}
+
+h1,
+h2,
+h3 {
+  color: $very-dark-blue;
+}
+
+
+header {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 200;
+  }
+
+  h2 {
+    margin-top: 12px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  p {
+    width: 100%;
+    max-width: 54ch;
+    margin-top: 26px;
+  }
+}
+
+.cards {
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 30px;
+  margin-top: 65px;
+  width: 100%;
+  max-width: 1110px;
+  grid-template-areas: ". red ."
+    "cyan red blue"
+    "cyan orange blue"
+    ". orange .";
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  height: auto;
+  min-height: 250px;
+  max-width: 350px;
+  padding: 32px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+  border-top: 4px solid;
+
+  &:nth-child(1) {
+    border-color: $cyan;
+    grid-area: cyan;
+  }
+
+  &:nth-child(2) {
+    border-color: $red;
+    grid-area: red;
+  }
+
+  &:nth-child(3) {
+    border-color: $orange;
+    grid-area: orange;
+  }
+
+  &:nth-child(4) {
+    border-color: $blue;
+    grid-area: blue;
+  }
+
+  .card-header {
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+
+  .card-body {
+    flex-grow: 1;
+    margin-top: 10px;
+
+    p {
+      font-size: 0.8rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  .card-footer img {
+    float: right;
+  }
+}
+
+.shadow-shorter {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01),
+    0 2px 2px rgba(0, 0, 0, 0.01),
+    0 4px 4px rgba(0, 0, 0, 0.01),
+    0 6px 8px rgba(0, 0, 0, 0.01),
+    0 8px 16px rgba(0, 0, 0, 0.01);
+}
+
+.shadow-longer {
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.02),
+    0 4px 2px rgba(0, 0, 0, 0.02),
+    0 8px 4px rgba(0, 0, 0, 0.02),
+    0 16px 8px rgba(0, 0, 0, 0.02),
+    0 32px 16px rgba(0, 0, 0, 0.02);
+}
+
+
+@media (max-width:375px) {
+  body {
+    padding: 32px;
+    padding-top: 60px;
+  }
+
+  header {
+    // margin-top: 60px;
+
+    h1,
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      width: 33ch;
+      line-height: 1.5rem;
+    }
+  }
+
+  .cards {
+    width: 100%;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+
+    // grid-template-rows: repeat(auto-fit, minmax(500px, 1fr));
+
+    grid-template-areas: "cyan"
+      "red"
+      "orange"
+      "blue";
+  }
+
+  .card {
+    width: 100%;
+    padding: 28px;
+    height: 220;
+
+    .card-footer img {
+      width: 57px;
+
+    }
+  }
+}
