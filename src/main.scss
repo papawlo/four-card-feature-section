@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
-@import url("https://unpkg.com/tailwindcss@1.5.2/dist/base.css");
+@import url("./css/base.css");
 
 /*
- ## Colors 
+ ## Colors
  */
 
 //  ### Primary
@@ -42,7 +41,6 @@ h3 {
   color: $very-dark-blue;
 }
 
-
 header {
   text-align: center;
   width: 100%;
@@ -74,10 +72,11 @@ header {
   margin-top: 65px;
   width: 100%;
   max-width: 1110px;
-  grid-template-areas: ". red ."
-    "cyan red blue"
-    "cyan orange blue"
-    ". orange .";
+  grid-template-areas:
+    ". builder ."
+    "supervisor builder calculator"
+    "supervisor karma calculator"
+    ". karma .";
 }
 
 .card {
@@ -95,22 +94,22 @@ header {
 
   &:nth-child(1) {
     border-color: $cyan;
-    grid-area: cyan;
+    grid-area: supervisor;
   }
 
   &:nth-child(2) {
     border-color: $red;
-    grid-area: red;
+    grid-area: builder;
   }
 
   &:nth-child(3) {
     border-color: $orange;
-    grid-area: orange;
+    grid-area: karma;
   }
 
   &:nth-child(4) {
     border-color: $blue;
-    grid-area: blue;
+    grid-area: calculator;
   }
 
   .card-header {
@@ -136,24 +135,20 @@ header {
 }
 
 .shadow-shorter {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01),
-    0 2px 2px rgba(0, 0, 0, 0.01),
-    0 4px 4px rgba(0, 0, 0, 0.01),
-    0 6px 8px rgba(0, 0, 0, 0.01),
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01), 0 2px 2px rgba(0, 0, 0, 0.01),
+    0 4px 4px rgba(0, 0, 0, 0.01), 0 6px 8px rgba(0, 0, 0, 0.01),
     0 8px 16px rgba(0, 0, 0, 0.01);
 }
 
 .shadow-longer {
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.02),
-    0 4px 2px rgba(0, 0, 0, 0.02),
-    0 8px 4px rgba(0, 0, 0, 0.02),
-    0 16px 8px rgba(0, 0, 0, 0.02),
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.02), 0 4px 2px rgba(0, 0, 0, 0.02),
+    0 8px 4px rgba(0, 0, 0, 0.02), 0 16px 8px rgba(0, 0, 0, 0.02),
     0 32px 16px rgba(0, 0, 0, 0.02);
 }
 
-
-@media (max-width:375px) {
+@media (max-width: 480px) {
   body {
+    margin: 0;
     padding: 32px;
     padding-top: 60px;
   }
@@ -167,8 +162,9 @@ header {
     }
 
     p {
-      width: 33ch;
+      width: 100%;
       line-height: 1.5rem;
+      margin: 0;
     }
   }
 
@@ -179,20 +175,21 @@ header {
 
     // grid-template-rows: repeat(auto-fit, minmax(500px, 1fr));
 
-    grid-template-areas: "cyan"
-      "red"
-      "orange"
-      "blue";
+    grid-template-areas:
+      "supervisor"
+      "builder"
+      "karma"
+      "calculator";
   }
 
   .card {
     width: 100%;
+    max-width: initial;
     padding: 28px;
-    height: 220;
+    height: 220px;
 
     .card-footer img {
       width: 57px;
-
     }
   }
 }
